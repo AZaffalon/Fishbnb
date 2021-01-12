@@ -1,1 +1,1 @@
-This application is a study clone of AirBnB, designed for educationalpurposes. 
+This application is a study clone of AirBnB, designed for educational purposes. 
