@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :last_name, :first_name, presence: true
+  validates :last_name, :first_name, :city, presence: true
+  validates :rating, numericality: { greater_than: 0, less_than_or_equal_to: 5 }
 
   def full_name
     "#{first_name} #{last_name}"
