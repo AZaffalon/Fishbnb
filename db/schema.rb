@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_175422) do
+ActiveRecord::Schema.define(version: 2021_01_14_182535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_175422) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "available"
+    t.text "description"
     t.index ["fish_type_id"], name: "index_fish_on_fish_type_id"
     t.index ["user_id"], name: "index_fish_on_user_id"
   end
@@ -60,8 +61,6 @@ ActiveRecord::Schema.define(version: 2021_01_14_175422) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
-    t.integer "rating"
-    t.string "city"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
