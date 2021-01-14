@@ -1,8 +1,8 @@
 <h1> Liste des poissons </h1>
-<div class="flex-container">
+<div class="cards">
   <% @fishes.each do |fish|%>
     <div class="flex-item">
-      <div class="card-category" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)", width=100px">
+      <div class="card-category" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
         <%= fish.name %>
       </div>
         <%= link_to 'See more', fish_path(fish), class: 'btn btn-gradient btn-sm'%>

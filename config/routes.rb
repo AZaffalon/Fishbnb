@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]  #do
 #    resources :fishes, only: [:index]
 #  end
-  resources :fishes , only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :fishes , only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :bookings, only: :index
+  end
 end
