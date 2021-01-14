@@ -3,17 +3,21 @@ class FishesController < ApplicationController
 
   def index
     @fishes = Fish.all
+    authorize @fishes
   end
 
   def show
+    authorize @fish
   end
 
   def new
     @fish = Fish.new
+    authorize @fish
   end
 
   def create
     @fish = Fish.new(fish_params)
+    authorize @fish
     @fish.user = current_user
     if @fish.save
       redirect_to fish_path(@fish)
@@ -23,14 +27,20 @@ class FishesController < ApplicationController
   end
 
   def edit
+    authorize @fish
   end
 
   def update
-    @fish.update(fish_params)
-    redirect_to fish_path(@fish)
+    authorize @fish
+    if @fish.update(fish_params)
+      redirect_to fish_path(@fish)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    authorize @fish
     @fish.destroy
     redirect_to fishes_path
   end
