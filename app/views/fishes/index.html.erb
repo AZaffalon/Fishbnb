@@ -1,4 +1,9 @@
-<h1> Liste des poissons </h1>
+<div class="row">
+<h1 class='float-left'> Liste des poissons </h1>
+<% if policy(Fish).create? %>
+  <%= link_to 'Ajouter un poisson à la location', new_fish_path, class: 'textaligne_right btn btn-ghost btn-sm' %>
+<% end %>
+</div>
 <div class="cards">
   <% @fishes.each do |fish|%>
     <div class="flex-item">

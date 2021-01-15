@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 #    resources :fishes, only: [:index]
 #  end
   resources :fishes , only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    resources :bookings, only: :index
+    resources :bookings, only: [:index, :new, :create, :edit, :update]
   end
 end
