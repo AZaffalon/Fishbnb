@@ -2,6 +2,9 @@
 <p>To be completed</p>
 <h2>Liste des réservations de <%= @fish.name %></h2>
 <p>Propriétaire : <%= @fish.user.full_name %></p>
+<% if @fish.photo.attached? %>
+  <%= image_tag @fish.photo %>
+<% end %>
 <table class= "table table-striped table-sm">
   <thead>
     <th>Du</th>

@@ -4,5 +4,6 @@
   <%= f.input :colour %>
   <%= f.input :length %>
   <%= f.input :fish_type_id, label_method: :common_name, collection: FishType.all %>
+  <%= f.input :photo, as: :file %>
   <%= f.button :submit %>
 <% end %>
