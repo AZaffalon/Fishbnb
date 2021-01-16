@@ -5,8 +5,8 @@
   <% else %>
   : Il n'est <strong>plus disponible à la location</strong>.
 <% end %></p>
-<p>il mesure <%= @fish.length %> cm et sa couleur est <%= @fish.colour %>.</p>
-<p>Le commentaire du propriétaire</p>
+<p>Il mesure <%= @fish.length %> cm et sa couleur est <%= @fish.colour %>.</p>
+<p>Le commentaire du propriétaire sur <%= @fish.name %> : <%= @fish.comment %> </p>
 
 <h3>Liste des réservations de <%= @fish.name %></h3>
 <table class= "table table-striped table-sm">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_175422) do
+ActiveRecord::Schema.define(version: 2021_01_16_130352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_175422) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "available"
+    t.text "comment"
     t.index ["fish_type_id"], name: "index_fish_on_fish_type_id"
     t.index ["user_id"], name: "index_fish_on_user_id"
   end
