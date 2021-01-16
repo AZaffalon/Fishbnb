@@ -53,6 +53,10 @@ class FishesController < ApplicationController
   end
 
   def fish_params
+<<<<<<< HEAD
     params.require(:fish).permit(:name, :price_per_week, :colour, :length, :fish_type_id, :photo)
+=======
+    params.require(:fish).permit(:name, :price_per_week, :colour, :length, :fish_type_id, :available)
+>>>>>>> master
   end
 end
