@@ -1,0 +1,3 @@
+<h1>Réservation de <%= @fish.name %> par <%= current_user.full_name %></h1>
+<%= render 'form' %>
+<%= link_to "Retour à la fiche de #{@fish.name}", fish_path(@fish) %>

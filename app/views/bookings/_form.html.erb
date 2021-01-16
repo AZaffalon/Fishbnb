@@ -1,0 +1,6 @@
+<%= simple_form_for [ @fish, @booking ] do |f| %>
+  <%= f.input :start_at, as: :string %>
+  <%= f.input :end_at, as: :string %>
+
+  <%= f.submit "Réserver #{@fish.name}", class: "btn btn-primary" %>
+<% end %>
