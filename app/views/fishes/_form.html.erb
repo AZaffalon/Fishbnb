@@ -6,5 +6,6 @@
   <%= f.input :available, as: :boolean, input_html: {value: true}  %>
   <%= f.input :fish_type_id, label_method: :common_name, collection: FishType.all %>
   <%= f.input :comment, as: :text %>
+  <%= f.input :photo, as: :file %>
   <%= f.button :submit %>
 <% end %>
