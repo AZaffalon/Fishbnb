@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :fishes, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :bookings, only: [:index, :new, :create, :edit, :update]
   end
+  resources :bookings, only: :destroy
 end
