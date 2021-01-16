@@ -8,7 +8,7 @@
 <p>Il mesure <%= @fish.length %> cm et sa couleur est <%= @fish.colour %>.</p>
 <p>Le commentaire du propriétaire sur <%= @fish.name %> : <%= @fish.comment %> </p>
 <% if @fish.photo.attached? %>
-  <%= image_tag @fish.photo %>
+  <%= image_tag @fish.photo, width:500  %>
 <% end %>
 
 <h3>Liste des réservations de <%= @fish.name %></h3>
