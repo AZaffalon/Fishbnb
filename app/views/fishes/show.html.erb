@@ -24,7 +24,7 @@
     <% end %>
   </tbody>
 </table>
-<% if policy(@fish).edit? && @fish.available %>
+<% if @fish.available && @fish.user != current_user %>
   <%= link_to "Réserver #{@fish.name} à la location", new_fish_booking_path(@fish), class: 'btn btn-ghost btn-sm' %>
 <% end %>
 <% if policy(@fish).edit? %>
