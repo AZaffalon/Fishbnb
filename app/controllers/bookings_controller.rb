@@ -12,13 +12,16 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
     @fish = Fish.find(params[:fish_id])
-    @user = current_user
-    @booking.fish = @fish
-    authorize @booking.fish
-    @booking.save
-    redirect_to fish_path(@fish)
+    @start_at = params[:booking][:start_at]
+    @end_at = params[:booking][:end_at]
+    @booking = Booking.new(start_at: @start_at, end_at: @end_at, fish: @fish, user: current_user)
+    authorize @booking
+    if @booking.save
+      redirect_to fish_path(@fish)
+    else
+      render :new
+    end
   end
 
   private
