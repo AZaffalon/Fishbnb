@@ -24,7 +24,7 @@
     <tr>
       <td><%= booking.start_at %></td>
       <td><%= booking.end_at %></td>
-      <td>Réservé par <%= @fish.user.full_name %></td>
+      <td>Réservé par <%= booking.user.full_name %></td>
       <td>Confirmée/En attente/Non validée</td>
     </tr>
     <% end %>
