@@ -7,7 +7,9 @@
           <%= fish.name %>
         </div>
       <% end %>
-    <%= link_to 'See more', fish_path(fish), class: 'btn btn-ghost btn-sm'%>
+    <div class="card-actions">
+        <%= link_to 'See more', fish_path(fish), class: 'btn btn-ghost btn-sm'%>
+      </div>
     </div>
   <% end %>
 </div>
