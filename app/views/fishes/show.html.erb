@@ -6,7 +6,7 @@
   : Il n'est <strong>plus disponible à la location</strong>.
 <% end %></p>
 <p>Il mesure <%= @fish.length %> cm et sa couleur est <%= @fish.colour %>.</p>
-<p>Le commentaire de priétaire sur <%= @fish.name %> : <%= @fish.comment %> </p>
+<p>Le commentaire de propriétaire sur <%= @fish.name %> : <%= @fish.comment %> </p>
 <% if @fish.photo.attached? %>
   <%= image_tag @fish.photo, width:500  %>
 <% end %>
