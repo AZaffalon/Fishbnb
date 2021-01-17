@@ -1,12 +1,12 @@
 <h1> Pour en savoir plus sur <%= @fish.name %> (<%= @fish.fish_type.common_name %>)</h1>
-<p><%= @fish.name %> est l'heureux compagnon de <%= @fish.user.full_name %>
+<p><%= @fish.name %> est l'heureux compagnon de <%= @fish.user.first_name %>
 <% if @fish.available %>
   et est <strong>disponible à la location au tarif de <%= @fish.price_per_week %> €/semaine</strong>.
   <% else %>
   : Il n'est <strong>plus disponible à la location</strong>.
 <% end %></p>
 <p>Il mesure <%= @fish.length %> cm et sa couleur est <%= @fish.colour %>.</p>
-<p>Le commentaire du propriétaire sur <%= @fish.name %> : <%= @fish.comment %> </p>
+<p>Le commentaire de priétaire sur <%= @fish.name %> : <%= @fish.comment %> </p>
 <% if @fish.photo.attached? %>
   <%= image_tag @fish.photo, width:500  %>
 <% end %>
@@ -16,7 +16,7 @@
   <thead>
     <th>Du</th>
     <th>Au</th>
-    <th>Disponibilité</th>
+    <th>Réservé par</th>
     <th>Statut réservation</th>
   <thead>
   <tbody>
@@ -24,7 +24,7 @@
     <tr>
       <td><%= booking.start_at %></td>
       <td><%= booking.end_at %></td>
-      <td>Réservé par <%= booking.user.full_name %></td>
+      <td><%= booking.user.first_name %></td>
       <td>Confirmée/En attente/Non validée</td>
       <td>
         <ul class="list-inline mb-0">
