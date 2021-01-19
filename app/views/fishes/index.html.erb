@@ -1,15 +1,21 @@
 <h1> Liste des poissons disponibles à la location</h1>
-<div class="cards">
-  <% @fishes.each do |fish|%>
-    <div class="flex-item card">
-      <% if fish.photo.attached? %>
-        <div class="card-category" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path fish.photo.key %>')">
-          <%= fish.name %>
+<div class="row">
+  <div class="cards col-7">
+    <% @fishes.each do |fish|%>
+      <div class="flex-item card">
+        <% if fish.photo.attached? %>
+          <div class="card-category" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path fish.photo.key %>')">
+            <%= fish.name %>
+          </div>
+        <% end %>
+      <div class="card-actions">
+          <%= link_to 'See more', fish_path(fish), class: 'btn btn-ghost btn-sm'%>
         </div>
-      <% end %>
-    <div class="card-actions">
-        <%= link_to 'See more', fish_path(fish), class: 'btn btn-ghost btn-sm'%>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <div class="col-5" id="map" style="width: 50%; height: 300px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>

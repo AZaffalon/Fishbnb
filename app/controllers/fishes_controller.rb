@@ -4,10 +4,24 @@ class FishesController < ApplicationController
   def index
     @fishes = Fish.all
     authorize @fishes
+    @markers = Fish.all.geocoded.map do |fish|
+      {
+        lat: fish.latitude,
+        lng: fish.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { fish: fish })
+      }
+    end
   end
 
   def show
     authorize @fish
+    @markers = Fish.all.geocoded.map do |fish|
+      {
+        lat: fish.latitude,
+        lng: fish.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { fish: fish })
+      }
+    end
   end
 
   def new
@@ -53,6 +67,7 @@ class FishesController < ApplicationController
   end
 
   def fish_params
-    params.require(:fish).permit(:name, :price_per_week, :colour, :length, :fish_type_id, :available, :photo, :comment)
+    params.require(:fish).permit(:name, :price_per_week, :colour, :length,
+     :fish_type_id, :available, :photo, :comment, :address)
   end
 end
