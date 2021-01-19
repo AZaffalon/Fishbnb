@@ -1,19 +1,42 @@
 <h1> Liste des poissons disponibles à la location</h1>
 <div class="row">
-  <div class="row cards col-7">
+
+
+
+
+  <div class="cards col-sm-6">
+  
     <% @fishes.each do |fish|%>
+    <%= link_to fish_path(fish) do %>
       <div class="flex-item card">
         <% if fish.photo.attached? %>
           <div class="card-category" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path fish.photo.key %>')">
             <%= fish.name %>
-          </div>
+          </div>      
         <% end %>
+        <% end %>    
+
+      <%= link_to fish_path(fish) do %>
       <div class="card-actions">
-          <%= link_to 'See more', fish_path(fish), class: 'btn btn-ghost btn-sm'%>
-        </div>
+        <div><%= fish.name %></div>
+        <div><%= fish.price_per_week %>€/semaine</div>
+        <div><%= fish.address %></div>
+        <div><% ville = Geocoder.search("#{fish.address}") %></div>
+        <%#= Il trouve pas l'addresse liée au poisson ! Alors que dans la console oui
+        Geocoder.search("#{fish.address}").first.municipality %>
       </div>
+      <% end %>
+    </div>
     <% end %>
   </div>
+</div>
+
+
+
+
+
+
+
   <div class="col-5" id="map" style="width: 50%; height: 300px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
