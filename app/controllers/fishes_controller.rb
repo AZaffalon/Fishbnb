@@ -9,7 +9,7 @@ class FishesController < ApplicationController
         lat: fish.latitude,
         lng: fish.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { fish: fish }),
-        asset_url: helpers.asset_url(
+        image_url: helpers.asset_url(
           "https://res.cloudinary.com/drzg8kw0k/image/upload/v1610649377/fishbnb/logo_gbtsbs.png"
         )
       }
