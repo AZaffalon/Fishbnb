@@ -8,7 +8,10 @@ class FishesController < ApplicationController
       {
         lat: fish.latitude,
         lng: fish.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { fish: fish })
+        infoWindow: render_to_string(partial: "info_window", locals: { fish: fish }),
+        image_url: helpers.asset_url(
+          "https://res.cloudinary.com/drzg8kw0k/image/upload/v1610649377/fishbnb/logo_gbtsbs.png"
+        )
       }
     end
   end
