@@ -1,6 +1,10 @@
 .wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+  "a b"
+  "c c";
+  align-items: start;
   padding-bottom:  15px;
   grid-gap: 30px;
 }
@@ -11,9 +15,18 @@ p {
 }
 
 .one img {
+  grid-area: a;
   width: 100%;
   height: 412px;
   border-radius: 10px;
+}
+
+.two {
+  grid-area: b;
+}
+
+.three {
+  grid-area: c;
 }
 
 #color, #user, #specie, #available, #height, #price {
