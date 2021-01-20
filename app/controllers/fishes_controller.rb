@@ -43,7 +43,6 @@ class FishesController < ApplicationController
   def update
     authorize @fish
     if @fish.update(fish_params)
-      # @fish.photo.attach(params[:photo])
       redirect_to fish_path(@fish)
     else
       render :edit
