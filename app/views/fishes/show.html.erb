@@ -1,22 +1,16 @@
 <h1> Pour en savoir plus sur <%= @fish.name %> (<%= @fish.fish_type.common_name %>)</h1>
 <div class="row">
-  <div class="col-7">
-    <p><%= @fish.name %> est l'heureux compagnon de <%= @fish.user.first_name %>
-    <% if @fish.available %>
-      et est <strong>disponible à la location au tarif de <%= @fish.price_per_week %> €/semaine</strong>.
-      <% else %>
-      : Il n'est <strong>plus disponible à la location</strong>.
-    <% end %></p>
-    <p>Il mesure <%= @fish.length %> cm et sa couleur est <%= @fish.colour %>.</p>
-    <p>Le commentaire de propriétaire sur <%= @fish.name %> : <%= @fish.comment %> </p>
-    <% if @fish.photo.attached? %>
-      <%= image_tag @fish.photo, width:500  %>
-    <% end %>
-  </div>
-  <div class="col-5" id="map" style="width: 50%; height: 300px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+  <p><%= @fish.name %> est l'heureux compagnon de <%= @fish.user.first_name %>
+  <% if @fish.available %>
+    et est <strong>disponible à la location au tarif de <%= @fish.price_per_week %> €/semaine</strong>.
+    <% else %>
+    : Il n'est <strong>plus disponible à la location</strong>.
+  <% end %></p>
+  <p>Il mesure <%= @fish.length %> cm et sa couleur est <%= @fish.colour %>.</p>
+  <p>Le commentaire de propriétaire sur <%= @fish.name %> : <%= @fish.comment %> </p>
+  <% if @fish.photo.attached? %>
+    <%= image_tag @fish.photo, width:500  %>
+  <% end %>
 </div>
 
 <h3>Liste des réservations de <%= @fish.name %></h3>

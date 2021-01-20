@@ -18,13 +18,6 @@ class FishesController < ApplicationController
 
   def show
     authorize @fish
-    @markers = Fish.all.geocoded.map do |fish|
-      {
-        lat: fish.latitude,
-        lng: fish.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { fish: fish })
-      }
-    end
   end
 
   def new
