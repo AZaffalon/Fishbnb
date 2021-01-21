@@ -4,6 +4,9 @@ class Booking < ApplicationRecord
   validate :end_at_after_start_at
   validates :start_at, :end_at, presence: true, inclusion: { in: (Date.today..Date.today+1.years) }
 
+  def total_cost
+    #(price_per_week * (end_at - start_at) / 7).round(0) + 1
+  end
 
   private
 
@@ -14,4 +17,5 @@ class Booking < ApplicationRecord
       errors.add :end_at, "Doit être postérieure à la date de début de réservation"
     end
   end
+
 end
