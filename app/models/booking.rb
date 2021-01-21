@@ -3,8 +3,7 @@ class Booking < ApplicationRecord
   belongs_to :fish
   validate :end_at_after_start_at
   validates :start_at, :end_at, presence: true,
-    inclusion: { in: (Date.today..Date.today + 1.years) }, availability: true
-
+    inclusion: { in: (Date.today..Date.today + 1.years) }
   private
 
   def end_at_after_start_at
