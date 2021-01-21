@@ -1,5 +1,6 @@
 <h1> Pour en savoir plus sur <%= @fish.name %> (<%= @fish.fish_type.common_name %>)</h1>
 <div class="row">
+
   <p><%= @fish.name %> est l'heureux compagnon de <%= @fish.user.first_name %>
   <% if @fish.available %>
     et est <strong>disponible à la location au tarif de <%= @fish.price_per_week %> €/semaine</strong>.
