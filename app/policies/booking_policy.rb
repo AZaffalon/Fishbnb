@@ -6,15 +6,16 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    record_user || record.fish.user == user
   end
 
   def show?
-    true
+    record.user == user || record.fish.user == user
+    raise
   end
 
   def create?
-    true
+    record != user
   end
 
   def new?
@@ -22,7 +23,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.user == user || record.fish.user == user
   end
 
   def edit?
