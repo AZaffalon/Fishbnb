@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_184848) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "available"
+    t.text "description"
     t.text "comment"
     t.string "address"
     t.float "longitude"
