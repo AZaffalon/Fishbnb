@@ -29,7 +29,8 @@ class FishesController < ApplicationController
     @fish = Fish.new(fish_params)
     authorize @fish
     @fish.user = current_user
-    if @fish.save
+    if @fish.valid?
+      @fish.save
       redirect_to fish_path(@fish)
     else
       render :new
@@ -42,7 +43,10 @@ class FishesController < ApplicationController
 
   def update
     authorize @fish
-    if @fish.update(fish_params)
+    @fish.assign_attributes(fish_params)
+    if @fish.valid? 
+      @fish.save
+      # @fish.photo.attach(params[:photo])
       redirect_to fish_path(@fish)
     else
       render :edit
