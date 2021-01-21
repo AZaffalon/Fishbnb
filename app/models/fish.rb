@@ -6,7 +6,7 @@ class Fish < ApplicationRecord
   geocoded_by :address
   validates :name, presence: true
   after_validation :add_city
-  # after_validation :geocode, if: :will_save_change_to_address?
+  after_validation :geocode, if: :will_save_change_to_address?
   # validates :price_per_week, numericality: { only_integer: true }
 end
 

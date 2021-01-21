@@ -24,7 +24,7 @@ require("channels")
 import "bootstrap";
 import { initFlatpickr } from "../plugins/init_flatpickr";
 import { initMapbox } from '../plugins/init_mapbox';
-import { autocomplete} from '../plugins/init_autocomplete';
+import { initAutocomplete} from '../plugins/init_autocomplete';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
