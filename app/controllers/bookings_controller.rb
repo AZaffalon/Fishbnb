@@ -60,4 +60,9 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:start_at, :end_at, :current_status)
   end
+
+  def set_current_cost
+    @current_cost = @fish.price_per_week * (booking.end_at - booking.start_at) / 7).round(0) + 1
+  end
+
 end

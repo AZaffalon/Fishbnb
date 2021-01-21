@@ -24,6 +24,7 @@
       <th>Au</th>
       <th>Réservé par</th>
       <th>Statut réservation</th>
+      <th>Tarif de la période</th>
     <thead>
     <tbody>
       <% @fish.bookings.where(user: current_user).each do |booking| %>
@@ -32,6 +33,7 @@
         <td><%= booking.end_at %></td>
         <td><%= booking.user.first_name %></td>
         <td><%= booking.current_status %></td>
+        <td><%= (@fish.price_per_week * (booking.end_at - booking.start_at) / 7).round(0) + 1 %> €</td>
         <td>
           <ul class="list-inline mb-0">
             <li class="list-inline-item">

@@ -6,6 +6,7 @@
       <th>Du</th>
       <th>Au</th>
       <th>Disponibilité</th>
+      <th>Tarif de la période</th>
     </tr>
   <thead>
   <tbody>
@@ -16,6 +17,7 @@
         <td><%= booking.start_at %></td>
         <td><%= booking.end_at %></td>
         <td><%= booking.available %></td>
+        <td><%= booking.current_cost %> €</td>
       </tr>
     <% end %>
   </tbody>
