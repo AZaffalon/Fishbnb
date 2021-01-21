@@ -20,10 +20,7 @@
       <div class="card-actions">
         <div><%= fish.name %></div>
         <div><%= fish.price_per_week %>€/semaine</div>
-        <div><%= fish.address %></div>
-        <div><% ville = Geocoder.search("#{fish.address}") %></div>
-        <%#= Il trouve pas l'addresse liée au poisson ! Alors que dans la console oui
-        Geocoder.search("#{fish.address}").first.municipality %>
+        <div><%= fish.city %></div>
       </div>
       <% end %>
     </div>
