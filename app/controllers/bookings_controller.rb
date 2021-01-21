@@ -1,10 +1,15 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:edit, :update, :update, :destroy]
-  before_action
+  before_action :set_booking, only: [:edit, :update, :destroy]
+
   def index
     @fish = Fish.find(params[:fish_id])
     authorize @fish
-    @bookings = Booking.where(@fish)
+    puts "@fish.user, current_user #{@fish.user}, #{current_user}"
+    if @fish.user == current_user
+      @bookings = Booking.where(user: current_user)
+    else
+      @bookings = Booking.where(user: @fish.user)
+     end
   end
 
   def new
@@ -53,6 +58,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_at, :end_at)
+    params.require(:booking).permit(:start_at, :end_at, :current_status)
   end
 end

@@ -63,49 +63,90 @@
     </ul>
   </div>
 </div>
-  <!-- Code mapbox en dessous -->
-  <!-- <div class="col-5" id="map" style="width: 50%; height: 300px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div> -->
 
-<!-- <h3>Liste des réservations de <%= @fish.name %></h3>
-<table class= "table table-striped table-sm">
-  <thead>
-    <th>Du</th>
-    <th>Au</th>
-    <th>Réservé par</th>
-    <th>Statut réservation</th>
-  <thead>
-  <tbody>
-    <% @fish.bookings.each do |booking| %>
-    <tr>
-      <td><%= booking.start_at %></td>
-      <td><%= booking.end_at %></td>
-      <td><%= booking.user.first_name %></td>
-      <td>Confirmée/En attente/Non validée</td>
-      <td>
-        <ul class="list-inline mb-0">
-          <li class="list-inline-item">
-            <% if policy(booking).update? %>
-              <%= link_to edit_fish_booking_path(@fish, booking) do %>
-                <i class="fas fa-edit list-inline-item"></i>
+<!-- Tab Mes réservations  -->
+<% if !(@fish.user == current_user) %>
+<% #if (@fish.bookings.where(user: current_user)) %>
+  <h3>Mes réservations de <%= @fish.name %></h3>
+  <table class= "table table-striped table-sm">
+    <thead>
+      <th>Du</th>
+      <th>Au</th>
+      <th>Réservé par</th>
+      <th>Statut réservation</th>
+    <thead>
+    <tbody>
+      <% @fish.bookings.where(user: current_user).each do |booking| %>
+      <tr>
+        <td><%= booking.start_at %></td>
+        <td><%= booking.end_at %></td>
+        <td><%= booking.user.first_name %></td>
+        <td><%= booking.current_status %></td>
+        <td>
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <% if policy(booking).update? %>
+                <%= link_to edit_fish_booking_path(@fish, booking) do %>
+                  <i class="fas fa-edit list-inline-item"></i>
+                <% end %>
               <% end %>
-            <% end %>
-          </li>
-          <li class="list-inline-item">
-            <% if policy(booking).destroy? %>
-              <%= link_to booking_path(booking), method: :delete, data: {confirm: "Êtes vous sûr ?"} do %>
-                <i class="fas fa-trash-alt list-inline-item"></i>
+            </li>
+            <li class="list-inline-item">
+              <% if policy(booking).destroy? %>
+                <%= link_to booking_path(booking), method: :delete, data: {confirm: "Êtes vous sûr ?"} do %>
+                  <i class="fas fa-trash-alt list-inline-item"></i>
+                <% end %>
               <% end %>
-            <% end %>
-          </li>
-        </ul>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table> -->
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<!--Tab les réservations de mon poisson -->
+
+<% if (@fish.user == current_user) %>
+  <h3>Les réservations de mon poisson <%= @fish.name %></h3>
+  <table class= "table table-striped table-sm">
+    <thead>
+      <th>Du</th>
+      <th>Au</th>
+      <th>Réservé par</th>
+      <th>Statut réservation</th>
+    <thead>
+    <tbody>
+      <% @fish.bookings.where.not(user: current_user).each do |booking| %>
+        <tr>
+          <td><%= booking.start_at %></td>
+          <td><%= booking.end_at %></td>
+          <td><%= booking.user.first_name %></td>
+          <td><%= booking.current_status %></td>
+          <td>
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item">
+                <% if policy(booking).update? %>
+                  <%= link_to edit_fish_booking_path(@fish, booking) do %>
+                    <i class="fas fa-edit list-inline-item"></i>
+                  <% end %>
+                <% end %>
+              </li>
+              <li class="list-inline-item">
+                <% if policy(booking).destroy? %>
+                  <%= link_to booking_path(booking), method: :delete, data: {confirm: "Êtes vous sûr ?"} do %>
+                    <i class="fas fa-trash-alt list-inline-item"></i>
+                  <% end %>
+                <% end %>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 <% if @fish.available && @fish.user != current_user %>
   <%= link_to "Réserver #{@fish.name} à la location", new_fish_booking_path(@fish), class: 'btn btn-ghost btn-sm' %>
 <% end %>

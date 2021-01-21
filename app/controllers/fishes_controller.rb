@@ -18,13 +18,6 @@ class FishesController < ApplicationController
 
   def show
     authorize @fish
-    @markers = Fish.all.geocoded.map do |fish|
-      {
-        lat: fish.latitude,
-        lng: fish.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { fish: fish })
-      }
-    end
   end
 
   def new
@@ -50,7 +43,6 @@ class FishesController < ApplicationController
   def update
     authorize @fish
     if @fish.update(fish_params)
-      # @fish.photo.attach(params[:photo])
       redirect_to fish_path(@fish)
     else
       render :edit
