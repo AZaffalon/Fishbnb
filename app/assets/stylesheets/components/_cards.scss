@@ -7,6 +7,9 @@
 .flex-item {
   display: flex;
   flex-direction: column;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
@@ -32,7 +35,7 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 2fr 2fr;
   }
 }
 
