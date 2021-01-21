@@ -3,10 +3,10 @@
       required: false, input_html: {class: "datepicker"} %>
   <%= f.input :end_at, as: :string, label: 'Au', placeholder: 'dd/mm/YYYY',
       required: false, input_html: {class: "datepicker"} %>
-  <% if @booking.current_status_range == 'En attente' %>
+  <% if @booking.current_status == 'En attente' %>
     <%= f.input :current_status %>
   <% else %>
     <%= f.input :current_status, as: :string, placeholder: "Modification inactive", disabled: true %>
   <% end %>
-  <%= f.submit "Réserver #{@fish.name}", class: "btn btn-ghost btn-sm" %>
+  <%= f.submit "Mettre à jour la réservation de #{@fish.name}", class: "btn btn-ghost btn-sm" %>
 <% end %>
