@@ -14,4 +14,5 @@ class Booking < ApplicationRecord
       errors.add :end_at, "Doit être postérieure à la date de début de réservation"
     end
   end
+
 end
