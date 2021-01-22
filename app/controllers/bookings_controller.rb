@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
     @booking.current_cost = (@fish.price_per_week * (@booking.end_at - @booking.start_at) / 7).round(0) + 1
     authorize @booking
     if @booking.save
-      redirect_to fish_path(@fish)
+      redirect_to fish_path(@fish, anchor: "booking-#{@booking.id}")
     else
       render :new
     end
@@ -45,7 +45,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.update(booking_params)
 
-    redirect_to fish_path(@fish)
+    redirect_to fish_path(@fish, anchor: "booking-#{@booking.id}")
   end
 
   def destroy
