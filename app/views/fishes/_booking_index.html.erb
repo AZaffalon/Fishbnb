@@ -18,7 +18,7 @@
         </thead>
         <tbody>
           <% @fish.bookings.where.not(user: current_user).each do |booking| %>
-            <tr>
+            <tr id="booking-<%= booking.id %>">
               <td><%= booking.start_at %></td>
               <td><%= booking.end_at %></td>
               <td><%= booking.user.first_name %></td>
@@ -61,7 +61,7 @@
         </thead>
         <tbody>
           <% @fish.bookings.where(user: current_user).each do |booking| %>
-            <tr>
+            <tr id="booking-<%= booking.id %>">
               <td><%= booking.start_at %></td>
               <td><%= booking.end_at %></td>
               <td><%= booking.user.first_name %></td>
