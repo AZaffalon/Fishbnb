@@ -9,7 +9,7 @@
         required: false, input_html: {class: "datepicker"} %>
   <% end %>
   <% if @booking.fish.user == current_user && @booking.current_status == 'En attente' %>
-    <%= f.input :current_status %>
+    <%= f.input :current_status, collection: @statuses %>
   <% end %>
   <%= f.submit "Mettre à jour la réservation de #{@fish.name}", class: "btn btn-ghost btn-sm" %>
 <% end %>
