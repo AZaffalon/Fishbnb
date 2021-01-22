@@ -1,6 +1,7 @@
 .card {
-  width: 280px;
+  width: 220px;
   border-width: 0;
+  margin: 10px 0;
 }
 
 .card-category {
@@ -24,4 +25,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+.card-actions:hover {
+  color: black;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-decoration: none;
 }
