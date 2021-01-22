@@ -1,7 +1,8 @@
 <%= simple_form_for [ @fish, @booking ] do |f| %>
-  <% if@fish.user == current_user %>
-    <p><%= @booking.start_at %></p>
-    <p><%= @booking.end_at %></p>
+  <% if @fish.user == current_user %>
+    <p>Date de début de réservation : <strong><%= @booking.start_at %></strong></p>
+    <p>Date de fin de réservation : <strong><%= @booking.end_at %></strong></p>
+    <p>Vous avez finalisé la réservation avec le statut : <strong><%= @booking.current_status %></p>
   <% else %>
     <%= f.input :start_at, as: :string, label: 'du', placeholder: 'dd/mm/YYYY',
         required: false, input_html: {class: "datepicker"} %>
@@ -9,7 +10,9 @@
         required: false, input_html: {class: "datepicker"} %>
   <% end %>
   <% if @booking.fish.user == current_user && @booking.current_status == 'En attente' %>
-    <%= f.input :current_status, collection: @statuses %>
+    <%= f.input :current_status, collection: @statuses, include_blank: false %>
   <% end %>
-  <%= f.submit "Mettre à jour la réservation de #{@fish.name}", class: "btn btn-ghost btn-sm" %>
+  <% if @booking.current_status == 'En attente' %>
+    <%= f.submit "Mettre à jour la réservation de #{@fish.name}", class: "btn btn-ghost btn-sm" %>
+  <% end %>
 <% end %>

@@ -37,14 +37,14 @@
         <td>
           <ul class="list-inline mb-0">
             <li class="list-inline-item">
-              <% if policy(booking).update? %>
+              <% if policy(booking).update? && booking.current_status == 'En attente' %>
                 <%= link_to edit_fish_booking_path(@fish, booking) do %>
                   <i class="fas fa-edit list-inline-item"></i>
                 <% end %>
               <% end %>
             </li>
             <li class="list-inline-item">
-              <% if policy(booking).destroy? %>
+              <% if policy(booking).destroy? && booking.current_status == 'En attente' %>
                 <%= link_to booking_path(booking), method: :delete, data: {confirm: "Êtes vous sûr ?"} do %>
                   <i class="fas fa-trash-alt list-inline-item"></i>
                 <% end %>
@@ -79,14 +79,14 @@
           <td>
             <ul class="list-inline mb-0">
               <li class="list-inline-item">
-                <% if policy(booking).update? %>
+                <% if policy(booking).update? && booking.current_status == 'En attente' %>
                   <%= link_to edit_fish_booking_path(@fish, booking) do %>
                     <i class="fas fa-edit list-inline-item"></i>
                   <% end %>
                 <% end %>
               </li>
               <li class="list-inline-item">
-                <% if policy(booking).destroy? %>
+                <% if policy(booking).destroy? && booking.current_status == 'En attente' %>
                   <%= link_to booking_path(booking), method: :delete, data: {confirm: "Êtes vous sûr ?"} do %>
                     <i class="fas fa-trash-alt list-inline-item"></i>
                   <% end %>
