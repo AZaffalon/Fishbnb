@@ -1,0 +1,7 @@
+<%= simple_form_for [ @fish, @booking ] do |f| %>
+  <%= f.input :start_at, as: :string, label: 'du', placeholder: 'dd/mm/YYYY',
+      required: false, input_html: {class: "datepicker"} %>
+  <%= f.input :end_at, as: :string, label: 'Au', placeholder: 'dd/mm/YYYY',
+      required: false, input_html: {class: "datepicker"} %>
+  <%= f.submit "Réserver #{@fish.name}", class: "btn btn-ghost btn-sm" %>
+<% end %>

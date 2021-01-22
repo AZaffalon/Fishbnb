@@ -10,6 +10,11 @@ class Fish < ApplicationRecord
   # validates :price_per_week, numericality: { only_integer: true }
 end
 
+def unavailable_dates
+  bookings.pluck(:start_at, :end_at).map do |range|
+    { from: range[0], to: range[1] }
+  end
+end
 
 private
 

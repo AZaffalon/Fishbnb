@@ -1,12 +1,12 @@
 <%= simple_form_for @fish do |f| %>
-  <%= f.input :name %>
-  <%= f.input :price_per_week %>
-  <%= f.input :colour %>
-  <%= f.input :length %>
-  <%= f.input :available, as: :boolean, input_html: {value: true}  %>
-  <%= f.input :address %>
-  <%= f.input :fish_type_id, label_method: :common_name, collection: FishType.all %>
-  <%= f.input :comment, as: :text %>
+  <%= f.input :name, label: "Nom" %>
+  <%= f.input :price_per_week, label: "Tarif à la semaine en €" %>
+  <%= f.input :colour, label: "Couleur" %>
+  <%= f.input :length, label: "Longueur en cm" %>
+  <%= f.input :available, label: "Disponible", as: :boolean, input_html: {value: true}  %>
+  <%= f.input :address, label: "Adresse de mise à disposition" %>
+  <%= f.input :fish_type_id, label: "Type", label_method: :common_name, collection: FishType.all %>
+  <%= f.input :comment, label: "Commentaire", as: :text %>
   <%= f.input :photo, as: :file %>
-  <%= f.button :submit, class: 'btn-danger btn-primary-form' %>
+  <%= f.button :submit, class: 'btn btn-ghost btn-sm mb-2' %>
 <% end %>

@@ -2,9 +2,8 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :fish
   validate :end_at_after_start_at
-  validates :start_at, :end_at, presence: true, inclusion: { in: (Date.today..Date.today+1.years) }
-
-
+  validates :start_at, :end_at, presence: true,
+    inclusion: { in: (Date.today..Date.today + 1.years) }
   private
 
   def end_at_after_start_at
@@ -14,4 +13,5 @@ class Booking < ApplicationRecord
       errors.add :end_at, "Doit être postérieure à la date de début de réservation"
     end
   end
+
 end
