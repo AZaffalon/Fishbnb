@@ -78,7 +78,7 @@
                   </li>
                   <li class="list-inline-item">
                     <% if policy(booking).destroy? && booking.current_status == 'En attente' %>
-                      <%= link_to booking_path(booking), method: :delete, data: {confirm: "Êtes vous sûr ?"} do %>
+                      <%= link_to booking_path(booking), method: :delete, data: {confirm: "Êtes vous sûr ?"}, remote: true do %>
                         <i class="fas fa-trash-alt list-inline-item"></i>
                       <% end %>
                     <% end %>

@@ -24,6 +24,6 @@
 <% end %>
 <% if policy(@fish).destroy? %>
   <%= link_to "Effacer #{@fish.name}", fish_path(@fish),
-  method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-ghost btn-sm' %>
+  method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-ghost btn-sm', remote: true %>
 <% end %>
 <%= link_to 'Retour à la liste des poissons', fishes_path, class: 'btn btn-ghost btn-sm' %>
