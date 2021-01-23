@@ -13,6 +13,6 @@
     <%= f.input :current_status, collection: @statuses, include_blank: false %>
   <% end %>
   <% if @booking.current_status == 'En attente' %>
-    <%= f.submit "Mettre à jour la réservation de #{@fish.name}", class: "btn btn-ghost btn-sm" %>
+    <%= f.submit "Mettre à jour la réservation de #{@fish.name}", class: "btn btn-flat btn-sm" %>
   <% end %>
 <% end %>
