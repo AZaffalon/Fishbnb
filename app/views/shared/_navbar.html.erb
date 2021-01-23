@@ -14,7 +14,7 @@
 
     <ul class="navbar-nav mr-auto">
 
-      
+
       <li>
           <%= form_tag fishes_path, method: :get, class: 'searchbar-list' do %>
           <%= text_field_tag :query,
@@ -24,7 +24,7 @@
           <%= submit_tag "Chercher", class: "btn btn-danger btn-primary-form ml-1 mr-2" %>
           <% end %>
       </li>
-      
+
 
       <% if user_signed_in? %>
         <li class="nav-item active">
