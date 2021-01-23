@@ -41,10 +41,10 @@
 
     <div class="row-fish">
       <% if @fish.comment? %>
-        <p style="font-size: 20px"> Description <!-- de <%= @fish.user.first_name.capitalize %> --> : </p>
+        <p style="font-size: 20px"> Commentaire <!-- de <%= @fish.user.first_name.capitalize %> --> : </p>
         <p id="description"><%= @fish.comment %></p>
       <% else %>
-        <p style="font-size: 20px">Description</p>
+        <p style="font-size: 20px">Commentaire</p>
         <p> Pas de commentaire de la part du propriétaire </p>
       <% end %>
     </div>
@@ -52,21 +52,6 @@
   </div>
 
   <div class="three">
-   <!-- Nav tabs -->
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Avis</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="reservation" aria-selected="false">Réservations</a>
-      </li>
-    </ul>
-
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">Lorem ipsum dolor sit amet consectetur adipisicing, elit. Voluptas excepturi delectus ipsum accusamus impedit itaque illo nam quisquam, vitae dolores ex laboriosam animi fugiat tenetur. Asperiores, sequi mollitia minus? Molestiae!</div>
-      <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="reservation-tab"><%= render "booking_index" %></div>
-    </div>
   </div>
 </div>
 
