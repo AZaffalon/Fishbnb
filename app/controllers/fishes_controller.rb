@@ -2,9 +2,13 @@ class FishesController < ApplicationController
   before_action :set_fish, only: [:show, :edit, :update, :destroy]
 
   def index
-    @fishes = Fish.all
+    if params[:query].present?
+      @fishes = Fish.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @fishes = Fish.all
+    end
     authorize @fishes
-    @markers = Fish.all.geocoded.map do |fish|
+    @markers = @fishes.geocoded.map do |fish|
       {
         lat: fish.latitude,
         lng: fish.longitude,

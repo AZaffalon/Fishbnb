@@ -1,6 +1,7 @@
 <!-- <h1> Pour en savoir plus sur <%= @fish.name %></h1> -->
 <div class="wrapper">
 
+<<<<<<< HEAD
   <div class="one">
     <% if @fish.photo.attached? %>
       <%= image_tag @fish.photo %>
@@ -53,14 +54,14 @@
         <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Avis</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Réservations</a>
+        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="reservation" aria-selected="false">Réservations</a>
       </li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
       <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">Lorem ipsum dolor sit amet consectetur adipisicing, elit. Voluptas excepturi delectus ipsum accusamus impedit itaque illo nam quisquam, vitae dolores ex laboriosam animi fugiat tenetur. Asperiores, sequi mollitia minus? Molestiae!</div>
-      <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+      <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="reservation-tab"><%= render "booking_index" %></div>
     </div>
   </div>
 </div>
@@ -78,8 +79,3 @@
   <% end %>
   <%= link_to 'Retour à la liste des poissons', fishes_path, class: 'btn btn-ghost btn-sm' %>
 </div>
-
-
-
-
-

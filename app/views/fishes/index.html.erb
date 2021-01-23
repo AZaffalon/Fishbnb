@@ -1,26 +1,38 @@
-<h1> Liste des poissons disponibles à la location</h1>
-<div class="row">
-  <div class="cards col-8">
-    <% @fishes.each do |fish|%>
+
+<div class="content">
+ <% unless @fishes.empty? %>
+  <div class="cards-grid">
+    <h1> Liste des poissons disponibles à la location</h1>
+    <div class="row">
+       <% @fishes.each do |fish|%>
         <div class="flex-item card">
           <%= link_to fish_path(fish) do %>
-            <% if fish.photo.attached? %>
-              <div class="card-category" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path fish.photo.key %>')">
-                <%= fish.name %>
-                <div class="card-actions">
-                  <%= fish.price_per_week %> €/semaine
-                  <%= fish.city %>
-                </div>
-              </div>
-            <% end %>
+            <div class="card-category" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path fish.photo.attached? ? fish.photo.key : "https://res.cloudinary.com/drzg8kw0k/image/upload/v1611342995/4hux27613gnhmjimg612mls9chi0.jpg" %>')"></div> 
+            <div class='card-actions'>
+              <div><%=fish.name %></div>
+              <div><%=fish.price_per_week%>€/semaine</div>
+              <div><%=fish.city %></div>
+            </div>
           <% end %>
         </div>
-    <% end %>
+      <% end %>  
+    </div>
   </div>
 
-<div class="col-4" id="map" style="width: 50%; height: 450px;"
-    data-markers="<%= @markers.to_json %>"
+  <div id="map" data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+
+
+  <% else %>
+  <div>
+    <h1> Liste des poissons disponibles à la location</h1>
+      <p>Aucun poisson correspondant à votre recherche.</p>
+  </div>
+  
+  <% end %>
+  
+
 </div>
-</div>
+
+
