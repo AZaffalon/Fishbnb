@@ -11,5 +11,5 @@
   <% if @booking.fish.user == current_user && @booking.current_status == 'En attente' %>
     <%= f.input :current_status %>
   <% end %>
-  <%= f.submit "Mettre à jour la réservation de #{@fish.name}", class: "btn btn-ghost btn-sm" %>
+  <%= f.submit "Mettre à jour la réservation de #{@fish.name}", class: "btn btn-flat btn-sm" %>
 <% end %>
