@@ -1,6 +1,6 @@
 
 <div class="content">
-
+ <% unless @fishes.empty? %>
   <div class="cards-grid">
     <h1> Liste des poissons disponibles à la location</h1>
     <div class="row">
@@ -24,7 +24,14 @@
   </div>
 
 
-
+  <% else %>
+  <div>
+    <h1> Liste des poissons disponibles à la location</h1>
+      <p>Aucun poisson correspondant à votre recherche.</p>
+  </div>
+  
+  <% end %>
+  
 
 </div>
 
