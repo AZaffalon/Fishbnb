@@ -1,5 +1,5 @@
 .card {
-  width: 220px;
+  width: 270px;
   border-width: 0;
   margin: 10px 0;
 }
@@ -19,18 +19,47 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 12px;
 }
-.card-actions {
-  margin: 10px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+.card-name {
+  position: absolute;
+  margin-top: 5px;
+  left: 50%;
+  top: 10%;
+  text-align: center;
   text-decoration: none;
-  color: black;
+  color: white;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
 }
 
-.card-actions:hover {
-  color: black;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+.card-price {
+  position: absolute;
+  left: 50%;
+  top: 90%;
+  text-align: center;
   text-decoration: none;
+  color: white;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  font-size: 18px;
 }
+
+.card-city {
+  position: absolute;
+  margin-top: 5px;
+  left: 50%;
+  top: 20%;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 18px;
+  color: white;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+}
+
+// .card-category:hover {
+//   color: red;
+//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+//   text-decoration: none;
+// }

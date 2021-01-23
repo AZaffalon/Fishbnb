@@ -19,6 +19,10 @@
       <p id="user"><i class="far fa-id-card"></i> <%= @fish.user.first_name.capitalize %></p>
     </div>
 
+    <div class="row-fish">
+      <p id="city"><i class="fas fa-home"></i> <%= @fish.city %></p>
+    </div>
+
     <div class="row-fish" id="available">
       <% if @fish.available %>
         <p>Disponibilitée: <i class="fas fa-check"></i></p>
@@ -36,7 +40,7 @@
     </div>
 
     <div class="row-fish">
-      <p id="price"><%= @fish.price_per_week %> <i class="fas fa-euro-sign">/week</i></p>
+      <p id="price"><%= @fish.price_per_week %>€/semaine</p>
     </div>
 
     <div class="row-fish">
