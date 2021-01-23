@@ -20,7 +20,7 @@
   border-radius: 12px;
 }
 
-#card-name {
+.card-name {
   position: absolute;
   margin-top: 5px;
   left: 50%;
@@ -32,7 +32,7 @@
   opacity: 0.7;
 }
 
-#card-price {
+.card-price {
   position: absolute;
   left: 50%;
   top: 90%;
@@ -44,7 +44,7 @@
   font-size: 18px;
 }
 
-#card-city {
+.card-city {
   position: absolute;
   margin-top: 5px;
   left: 50%;
@@ -58,8 +58,8 @@
   opacity: 0.7;
 }
 
-.card-infos:hover {
-  color: red;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  text-decoration: none;
-}
+// .card-category:hover {
+//   color: red;
+//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+//   text-decoration: none;
+// }
