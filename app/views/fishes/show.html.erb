@@ -1,29 +1,71 @@
-<h1> Pour en savoir plus sur <%= @fish.name %> (<%= @fish.fish_type.common_name %>)</h1>
-<div class="row">
+<!-- <h1> Pour en savoir plus sur <%= @fish.name %></h1> -->
+<div class="wrapper">
 
-  <p><%= @fish.name %> est l'heureux compagnon de <%= @fish.user.first_name %>
-  <% if @fish.available %>
-    et est <strong>disponible à la location au tarif de <%= @fish.price_per_week %> €/semaine</strong>.
-    <% else %>
-    : Il n'est <strong>plus disponible à la location</strong>.
-  <% end %></p>
-  <p>Il mesure <%= @fish.length %> cm et sa couleur est <%= @fish.colour %>.</p>
-  <p>Le commentaire de propriétaire sur <%= @fish.name %> : <%= @fish.comment %> </p>
-  <% if @fish.photo.attached? %>
-    <%= image_tag @fish.photo, width:500  %>
-  <% end %>
+  <div class="one">
+    <% if @fish.photo.attached? %>
+      <%= image_tag @fish.photo %>
+    <% end %>
+  </div>
+
+  <div class="two">
+
+    <h1 style="font-size: 30px;"><%= @fish.name %></h1>
+
+    <div class="row-fish" id="specie">
+      <p><i class="fas fa-fish" id="specie"></i> <%= @fish.fish_type.common_name %></p>
+    </div>
+
+    <div class="row-fish">
+      <p id="user"><i class="far fa-id-card"></i> <%= @fish.user.first_name.capitalize %></p>
+    </div>
+
+    <div class="row-fish" id="available">
+      <% if @fish.available %>
+        <p>Disponibilitée: <i class="fas fa-check"></i></p>
+      <% else %>
+       <p>Disponibilitée: <i class="fas fa-times-circle"></i></p>
+      <% end %>
+    </div>
+
+    <div class="row-fish">
+      <p id="color"><i class="fas fa-palette"></i> <%= @fish.colour %></p>
+    </div>
+
+    <div class="row-fish">
+      <p><i class="fas fa-arrows-alt-h" id="height" style=""></i> <%= @fish.length %>cm</p>
+    </div>
+
+    <div class="row-fish">
+      <p id="price"><%= @fish.price_per_week %> <i class="fas fa-euro-sign">/week</i></p>
+    </div>
+
+    <div class="row-fish">
+      <% if @fish.comment? %>
+        <p style="font-size: 20px"> Commentaire <!-- de <%= @fish.user.first_name.capitalize %> --> : </p>
+        <p id="description"><%= @fish.comment %></p>
+      <% else %>
+        <p style="font-size: 20px">Commentaire</p>
+        <p> Pas de commentaire de la part du propriétaire </p>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="three">
+    <%= render "booking_index" %>
+  </div>
 </div>
 
-<%= render "booking_index" %>
-
-<% if @fish.available && @fish.user != current_user %>
-  <%= link_to "Réserver #{@fish.name} à la location", new_fish_booking_path(@fish), class: 'btn btn-ghost btn-sm' %>
-<% end %>
-<% if policy(@fish).edit? %>
-  <%= link_to "Mettre à jour les informations de #{@fish.name}", edit_fish_path(@fish), class: 'btn btn-ghost btn-sm' %>
-<% end %>
-<% if policy(@fish).destroy? %>
-  <%= link_to "Effacer #{@fish.name}", fish_path(@fish),
-  method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-ghost btn-sm', remote: true %>
-<% end %>
-<%= link_to 'Retour à la liste des poissons', fishes_path, class: 'btn btn-ghost btn-sm' %>
+<div class="link">
+  <% if @fish.available && @fish.user != current_user %>
+    <%= link_to "Réserver #{@fish.name} à la location", new_fish_booking_path(@fish), class: 'btn btn-ghost btn-sm' %>
+  <% end %>
+  <% if policy(@fish).edit? %>
+    <%= link_to "Mettre à jour les informations de #{@fish.name}", edit_fish_path(@fish), class: 'btn btn-ghost btn-sm' %>
+  <% end %>
+  <% if policy(@fish).destroy? %>
+    <%= link_to "Effacer #{@fish.name}", fish_path(@fish),
+    method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-ghost btn-sm' %>
+  <% end %>
+  <%= link_to 'Retour à la liste des poissons', fishes_path, class: 'btn btn-ghost btn-sm' %>
+</div>

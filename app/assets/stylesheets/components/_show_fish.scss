@@ -1,0 +1,54 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+  "a b"
+  "c c";
+  align-items: start;
+  padding-bottom:  15px;
+  grid-gap: 30px;
+  margin: 20px 20px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.one img {
+  grid-area: a;
+  width: 100%;
+  height: 430px;
+  border-radius: 10px;
+}
+
+.two {
+  grid-area: b;
+}
+
+.three {
+  grid-area: c;
+}
+
+#color, #user, #specie, #available, #height, #price {
+  font-size: 20px;
+}
+
+#description {
+  border: solid 1px;
+  border-width: medium;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#height {
+  width: 25px;
+}
+
+.row-fish {
+  margin-bottom: 10px;
+}
+
+.link {
+  margin-bottom: 20px;
+}
