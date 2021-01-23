@@ -13,6 +13,19 @@
 <%# https://res.cloudinary.com/drzg8kw0k/image/upload/v1610720267/fishbnb/clown-fish_dvzxof.png %>
 
     <ul class="navbar-nav mr-auto">
+
+      
+      <li>
+          <%= form_tag fishes_path, method: :get, class: 'searchbar-list' do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Trouvez un poisson rouge" %>
+          <%= submit_tag "Chercher", class: "btn btn-danger btn-primary-form ml-1 mr-2" %>
+          <% end %>
+      </li>
+      
+
       <% if user_signed_in? %>
         <li class="nav-item active">
           <%= link_to "Proposer votre poisson rouge à la location", new_fish_path, class: "nav-link btn btn-ghost btn-sm ml-2 mr-2" %>
