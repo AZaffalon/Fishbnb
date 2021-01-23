@@ -1,7 +1,6 @@
 <!-- <h1> Pour en savoir plus sur <%= @fish.name %></h1> -->
 <div class="wrapper">
 
-<<<<<<< HEAD
   <div class="one">
     <% if @fish.photo.attached? %>
       <%= image_tag @fish.photo %>
@@ -41,8 +40,12 @@
     </div>
 
     <div class="row-fish">
-      <p style="font-size: 20px"> Description <!-- de <%= @fish.user.first_name.capitalize %> --> : </p>
-      <p id="description"><%= @fish.comment %></p>
+      <% if @fish.comment? %>
+        <p style="font-size: 20px"> Description <!-- de <%= @fish.user.first_name.capitalize %> --> : </p>
+        <p id="description"><%= @fish.comment %></p>
+      <% else %>
+        <p> Pas de commentaire de la part du propriétaire </p>
+      <% end %>
     </div>
 
   </div>
