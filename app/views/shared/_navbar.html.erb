@@ -14,7 +14,7 @@
 
     <ul class="navbar-nav mr-auto">
       <li>
-        <div class="search-form-control form-group searchbar-index">
+        <div class="search-form-control form-group searchbar-index" style="margin: 0px">
           <%= form_tag fishes_path, method: :get, class: 'searchbar-list' do %>
             <%= submit_tag "Recherche", class: "btn btn-ghost btn-sm mr-1" %>
             <%= text_field_tag :query,
