@@ -11,15 +11,15 @@
 
     <h1 style="font-size: 30px;"><%= @fish.name %></h1>
 
-    <div class="row" id="specie">
+    <div class="row-fish" id="specie">
       <p><i class="fas fa-fish" id="specie"></i> <%= @fish.fish_type.common_name %></p>
     </div>
 
-    <div class="row">
+    <div class="row-fish">
       <p id="user"><i class="far fa-id-card"></i> <%= @fish.user.first_name.capitalize %></p>
     </div>
 
-    <div class="row" id="available">
+    <div class="row-fish" id="available">
       <% if @fish.available %>
         <p>Disponibilitée: <i class="fas fa-check"></i></p>
       <% else %>
@@ -27,19 +27,19 @@
       <% end %>
     </div>
 
-    <div class="row">
+    <div class="row-fish">
       <p id="color"><i class="fas fa-palette"></i> <%= @fish.colour %></p>
     </div>
 
-    <div class="row">
+    <div class="row-fish">
       <p><i class="fas fa-arrows-alt-h" id="height" style=""></i> <%= @fish.length %>cm</p>
     </div>
 
-    <div class="row">
+    <div class="row-fish">
       <p id="price"><%= @fish.price_per_week %> <i class="fas fa-euro-sign">/week</i></p>
     </div>
 
-    <div class="row">
+    <div class="row-fish">
       <p style="font-size: 20px"> Description <!-- de <%= @fish.user.first_name.capitalize %> --> : </p>
       <p id="description"><%= @fish.comment %></p>
     </div>
@@ -47,76 +47,37 @@
   </div>
 
   <div class="three">
-   <nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Avis</a>
-      <a class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Réservations</a>
-      <!-- <a class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a> -->
-    </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi ab omnis voluptates recusandae
-        magni voluptatum natus molestiae quisquam cupiditate, nesciunt necessitatibus, consequuntur amet
-        accusantium laboriosam doloremque nihil quibusdam aspernatur odio.
-      </div>
-      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Réservations
-        <% if (@fish.user == current_user) %>
-         <h3>Les réservations de mon poisson <%= @fish.name %></h3>
-          <table class= "table table-striped table-sm">
-            <thead>
-              <th>Du</th>
-              <th>Au</th>
-              <th>Réservé par</th>
-              <th>Statut réservation</th>
-            <thead>
-            <tbody>
-               <% @fish.bookings.where.not(user: current_user).each do |booking| %>
-                 <tr>
-                  <td><%= booking.start_at %></td>
-                  <td><%= booking.end_at %></td>
-                  <td><%= booking.user.first_name %></td>
-                  <td><%= booking.current_status %></td>
-                  <td>
-                    <ul class="list-inline mb-0">
-                      <li class="list-inline-item">
-                        <% if policy(booking).update? %>
-                          <%= link_to edit_fish_booking_path(@fish, booking) do %>
-                            <i class="fas fa-edit list-inline-item"></i>
-                          <% end %>
-                        <% end %>
-                      </li>
-                       <li class="list-inline-item">
-                        <% if policy(booking).destroy? %>
-                          <%= link_to booking_path(booking), method: :delete, data: {confirm: "Êtes vous sûr ?"} do %>
-                            <i class="fas fa-trash-alt list-inline-item"></i>
-                          <% end %>
-                        <% end %>
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        <% end %>
-      </div>
-      <!-- <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div> -->
+   <!-- Nav tabs -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Avis</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Réservations</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">Lorem ipsum dolor sit amet consectetur adipisicing, elit. Voluptas excepturi delectus ipsum accusamus impedit itaque illo nam quisquam, vitae dolores ex laboriosam animi fugiat tenetur. Asperiores, sequi mollitia minus? Molestiae!</div>
+      <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
     </div>
   </div>
 </div>
 
-<% if @fish.available && @fish.user != current_user %>
-  <%= link_to "Réserver #{@fish.name} à la location", new_fish_booking_path(@fish), class: 'btn btn-ghost btn-sm' %>
-<% end %>
-<% if policy(@fish).edit? %>
-  <%= link_to "Mettre à jour les informations de #{@fish.name}", edit_fish_path(@fish), class: 'btn btn-ghost btn-sm' %>
-<% end %>
-<% if policy(@fish).destroy? %>
-  <%= link_to "Effacer #{@fish.name}", fish_path(@fish),
-  method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-ghost btn-sm' %>
-<% end %>
-<%= link_to 'Retour à la liste des poissons', fishes_path, class: 'btn btn-ghost btn-sm' %>
+<div class="link">
+  <% if @fish.available && @fish.user != current_user %>
+    <%= link_to "Réserver #{@fish.name} à la location", new_fish_booking_path(@fish), class: 'btn btn-ghost btn-sm' %>
+  <% end %>
+  <% if policy(@fish).edit? %>
+    <%= link_to "Mettre à jour les informations de #{@fish.name}", edit_fish_path(@fish), class: 'btn btn-ghost btn-sm' %>
+  <% end %>
+  <% if policy(@fish).destroy? %>
+    <%= link_to "Effacer #{@fish.name}", fish_path(@fish),
+    method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-ghost btn-sm' %>
+  <% end %>
+  <%= link_to 'Retour à la liste des poissons', fishes_path, class: 'btn btn-ghost btn-sm' %>
+</div>
 
 
 
