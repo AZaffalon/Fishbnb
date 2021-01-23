@@ -1,12 +1,12 @@
 <%= simple_form_for @fish do |f| %>
-  <%= f.input :name, label: "Nom" %>
-  <%= f.input :price_per_week, label: "Tarif à la semaine en €" %>
-  <%= f.input :colour, label: "Couleur" %>
-  <%= f.input :length, label: "Longueur en cm" %>
+  <%= f.input :name, label: "Nom", placeholder: "Jean-Jacques" %>
+  <%= f.input :price_per_week, label: "Tarif à la semaine en €", placeholder: "15" %>
+  <%= f.input :colour, label:"Couleur", placeholder: "Rouge et blanc"%>
+  <%= f.input :length, label: "Longueur en cm", placeholder: "35 cm" %>
   <%= f.input :available, label: "Disponible", as: :boolean, input_html: {value: true}  %>
-  <%= f.input :address, label: "Adresse de mise à disposition" %>
+  <%= f.input :address, label: 'Addresse de mise à disposition', placeholder: "16 villa Gaudelet, Paris" %>
   <%= f.input :fish_type_id, label: "Type", label_method: :common_name, collection: FishType.all %>
-  <%= f.input :comment, label: "Commentaire", as: :text %>
+  <%= f.input :comment, label: "Commentaire", as: :text, placeholder: "Parlez-nous de votre poisson!" %>
   <%= f.input :photo, as: :file %>
   <%= f.button :submit, class: 'btn btn-ghost btn-sm mb-2' %>
 <% end %>
